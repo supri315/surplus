@@ -17,6 +17,8 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('enable');
+            $table->timestamps();
+
         });
     }
 
