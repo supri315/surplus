@@ -3,28 +3,30 @@ namespace App\Http\Services;
 
 use Request;
 use Illuminate\Support\Arr;
-use App\Models\Category;
-use App\Http\Repositories\CategoryRepository;
+use App\Models\Product;
+use App\Http\Repositories\ProductRepository;
 
-class CategoryService extends BaseService
+class ProductService extends BaseService
 {
 
     public function __construct()
     {
-        $this->model = new Category;
-        $this->repository = new CategoryRepository;
+        $this->model = new Product;
+        $this->repository = new ProductRepository;
     }
 
     public function create($data)
     {
       
         $this->model->validate($data, [
-            'name'=>'required|unique:categories',
+            'name'=>'required|unique:products',
+            'description'=>'required',
             'enable' => 'required|boolean',                
          ]);
 
         $input = Arr::only($data, [
             "name",
+            "description",
             "enable"
         ]);
 
@@ -39,12 +41,14 @@ class CategoryService extends BaseService
         $checkData = $this->repository->getSingleData($id);
 
         $this->model->validate($data, [
-            'name'=>'required',\Illuminate\Validation\Rule::unique('categories')->ignore($id),
+            'name'=>'required',\Illuminate\Validation\Rule::unique('products')->ignore($id),
+            'description'=>'required',
             'enable' => 'required|boolean',                
          ]);
 
         $input = Arr::only($data, [
             "name",
+            "description",
             "enable"
         ]);
 
