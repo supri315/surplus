@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\CategoryProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,15 @@ Route::middleware('locale')->group(function () {
         Route::post('product/create', [ProductController::class, 'create']);
         Route::post('product/update/{id}', [ProductController::class, 'update']);
         Route::delete('product/{id}', [ProductController::class, 'delete']);
+
+        //category product
+        Route::get('categoryproduct', [CategoryProductController::class, 'index']);
+        Route::get('categoryproduct/{id}', [CategoryProductController::class, 'show']);
+        Route::post('categoryproduct/create', [CategoryProductController::class, 'create']);
+        Route::post('categoryproduct/update/{id}', [CategoryProductController::class, 'update']);
+        Route::delete('categoryproduct/{id}', [CategoryProductController::class, 'delete']);
+
+
 
 	});
 });
