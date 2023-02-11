@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryProductController;
 use App\Http\Controllers\Api\ImageController;
+use App\Http\Controllers\Api\ProductImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +54,12 @@ Route::middleware('locale')->group(function () {
         Route::post('image/update/{id}', [ImageController::class, 'update']);
         Route::delete('image/{id}', [ImageController::class, 'delete']);
 
-
+        //product image
+        Route::get('productimage', [ProductImageController::class, 'index']);
+        Route::get('productimage/{id}', [ProductImageController::class, 'show']);
+        Route::post('productimage/create', [ProductImageController::class, 'create']);
+        Route::post('productimage/update/{id}', [ProductImageController::class, 'update']);
+        Route::delete('productimage/{id}', [ProductImageController::class, 'delete']);
 
 	});
 });

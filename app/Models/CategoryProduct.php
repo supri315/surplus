@@ -23,8 +23,8 @@ class CategoryProduct extends BaseModel
             'category_products.updated_at',
             queryFormatDate('category_products.updated_at', 'fupdated_at', ' "%d-%b-%Y" '),
         ])
-        ->Leftjoin('categories', 'category_products.category_id','categories.id')
-        ->Leftjoin('products', 'category_products.product_id','products.id')
+        ->leftjoin('categories', 'category_products.category_id','categories.id')
+        ->leftjoin('products', 'category_products.product_id','products.id')
         ->orderBy('category_products.id', 'DESC');
     }   
 }
