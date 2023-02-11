@@ -61,6 +61,13 @@ Route::middleware('locale')->group(function () {
         Route::post('productimage/update/{id}', [ProductImageController::class, 'update']);
         Route::delete('productimage/{id}', [ProductImageController::class, 'delete']);
 
+        //product with image and category
+        Route::get('products', [ProductController::class, 'allProducts']);
+        Route::get('products/{id}', [ProductController::class, 'showAllProducts']);
+        Route::post('products/create', [ProductController::class, 'createAllProducts']);
+        Route::post('products/update/{id}', [ProductController::class, 'updateAllProducts']);
+        Route::delete('products/{id}', [ProductController::class, 'deleteAllProducts']);
+
 	});
 });
 

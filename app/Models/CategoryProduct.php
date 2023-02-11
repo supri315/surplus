@@ -19,6 +19,7 @@ class CategoryProduct extends BaseModel
             'products.name as product_name',
             'category_products.category_id',
             'categories.name as category_name',
+            'category_products.created_at',
             queryFormatDate('category_products.created_at', 'fcreated_at', ' "%d-%b-%Y" '),
             'category_products.updated_at',
             queryFormatDate('category_products.updated_at', 'fupdated_at', ' "%d-%b-%Y" '),

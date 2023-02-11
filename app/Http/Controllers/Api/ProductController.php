@@ -55,4 +55,50 @@ class ProductController extends Controller
       
         return new \App\Http\Resources\DeleteResource($data);
     }
+
+
+    ## function produk dengan categori dan gambar
+
+    public function allProducts()
+    {
+        $data = $this->service->getIndexDataAll([
+                'id'            =>  'id',
+                'name'          =>  'name',
+                'description'   =>  'description',
+                'enable'        =>  'enable',
+            ]);
+
+        return (\App\Http\Resources\ProductAllResource::collection($data))
+                ->additional([
+                    'sortableAndSearchableColumn' =>    $data->sortableAndSearchableColumn
+                ]);
+    }
+
+    public function showAllProducts($locale,$id)
+    {
+        $data = $this->service->getSingleAllData($id);
+        return new  \App\Http\Resources\ProductAllResource($data);
+    }
+    
+    public function createAllProducts($locale)
+    {
+        $data = $this->service->createProducts(\Request::all());
+        return new \App\Http\Resources\ProductAllResource($data);
+    }
+
+    public function updateAllProducts($locale,$id)
+    {
+        $data = $this->service->updateProducts($id,\Request::all());
+      
+        return new \App\Http\Resources\ProductAllResource($data);
+    }
+
+    public function deleteAllProducts($locale,$id)
+    {
+        $data = $this->service->deleteProducts($id);
+      
+        return new \App\Http\Resources\DeleteResource($data);
+    }
+
+
 }
