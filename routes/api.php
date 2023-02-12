@@ -68,6 +68,10 @@ Route::middleware('locale')->group(function () {
         Route::post('products/update/{id}', [ProductController::class, 'updateAllProducts']);
         Route::delete('products/{id}', [ProductController::class, 'deleteAllProducts']);
 
+        //all tables
+        Route::post('productall/create', [ProductController::class, 'createAllData']);
+
+
 	});
 });
 

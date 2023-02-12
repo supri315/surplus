@@ -101,4 +101,13 @@ class ProductController extends Controller
     }
 
 
+    ## function interaksi semua tabel
+    
+    public function createAllData($locale)
+    {
+        $data = $this->service->createAllData(\Request::all());
+        return new \App\Http\Resources\ProductAllResource($data);
+    }
+
+
 }

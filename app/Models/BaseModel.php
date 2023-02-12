@@ -14,33 +14,18 @@ class BaseModel extends Model
 
 	protected $soft_delete 	=	false;
 
-	protected $casts = ['created_at' => 'string'];
-
 	protected static $rules = [];
 
-	/**
-	 * [$sortableAndSearchableColumn description]
-	 * @var array
-	 */
 	public $sortableAndSearchableColumn = [];
 
-	/**
-	 * relationColumn variable
-	 *
-	 * @var array
-	 */
 	public $relationColumn = [];
 
-	/**
-	 * set All Model without timestamps
-	 * @var boolean
-	 */
 	public $timestamps = true;
 
-	/**
-	 * [setSortableAndSearchableColumn description]
-	 * @param array $value [description]
-	 */
+	const CREATED_AT = 'created_at';
+
+	const UPDATED_AT = 'updated_at';
+
 	public function scopeSetSortableAndSearchableColumn($query, $value=[])
 	{
 		$this->sortableAndSearchableColumn = $value;
