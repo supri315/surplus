@@ -23,6 +23,7 @@ class Product extends BaseModel
             'products.updated_at',
             queryFormatDate('products.updated_at', 'fupdated_at', ' "%d-%b-%Y" '),
         ])
+        ->where('products.enable',1)
         ->orderBy('products.id', 'DESC');
     }   
 

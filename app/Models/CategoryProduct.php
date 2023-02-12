@@ -26,6 +26,8 @@ class CategoryProduct extends BaseModel
         ])
         ->leftjoin('categories', 'category_products.category_id','categories.id')
         ->leftjoin('products', 'category_products.product_id','products.id')
+        ->where('categories.enable',1)
+        ->where('products.enable',1)
         ->orderBy('category_products.id', 'DESC');
     }   
 

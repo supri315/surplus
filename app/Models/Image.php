@@ -23,6 +23,7 @@ class Image extends BaseModel
             'images.updated_at',
             queryFormatDate('images.updated_at', 'fupdated_at', ' "%d-%b-%Y" '),
         ])
+        ->where('images.enable',1)
         ->orderBy('images.id', 'DESC');
     }   
 }

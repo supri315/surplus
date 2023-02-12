@@ -26,6 +26,8 @@ class ProductImage extends BaseModel
         ])
         ->leftjoin('images', 'product_images.image_id','images.id')
         ->leftjoin('products', 'product_images.product_id','products.id')
+        ->where('products.enable',1)
+        ->where('images.enable',1)
         ->orderBy('product_images.id', 'DESC');
     }   
 }

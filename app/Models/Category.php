@@ -23,6 +23,7 @@ class Category extends BaseModel
             'categories.updated_at',
             queryFormatDate('categories.updated_at', 'fupdated_at', ' "%d-%b-%Y" '),
         ])
+        ->where('categories.enable',1)
         ->orderBy('categories.id', 'DESC');
     }   
 
